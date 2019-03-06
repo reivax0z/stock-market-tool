@@ -1,0 +1,14 @@
+server:
+  servlet:
+    context-path: "/api"
+
+config:
+  api:
+    key: "RPUM100KN9IZZ83O"
+
+
+logging:
+  level:
+    ROOT: INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"

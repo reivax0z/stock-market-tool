@@ -1,0 +1,17 @@
+<div class="col-md-6 user-container">
+  <h2 class="text-center">Deposit Form</h2>
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="amount">Amount:</label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">$</span>
+        </div>
+        <input type="number" formControlName="amount" placeholder="Amount" name="amount" class="form-control" id="amount">
+      </div>
+    </div>
+
+    <button class="btn btn-success">Submit</button>
+  </form>
+</div>

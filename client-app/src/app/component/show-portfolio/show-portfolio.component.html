@@ -1,0 +1,65 @@
+<div class="col-md-6 col-lg-12 user-container">
+  <h2 class="alert-heading">Portfolio Details</h2>
+
+  <h4 class="alert-heading">Cash Available</h4>
+  <p>${{portfolio.cashBalance.toFixed(2)}}</p>
+
+  <h4 class="alert-heading">Shares</h4>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#ID</th>
+      <th>Symbol</th>
+      <th>Quantity</th>
+      <th>Price Paid</th>
+      <th>Market Value</th>
+      <th>Profit / Loss</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let share of portfolio.shareHoldings">
+      <td>{{share.uuid}}</td>
+      <td>{{share.stock.symbol}}</td>
+      <td>{{share.quantity}}</td>
+      <td>${{share.pricePaid.toFixed(2)}}</td>
+      <td>${{share.stock.price.toFixed(2)}}</td>
+      <td>${{(share.pricePaid - (share.quantity * share.stock.price)).toFixed(2)}}</td>
+      <td>
+        <button class="btn btn-info" (click)="trade(share.uuid)">Trade</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <hr>
+  <p class="mb-0">
+    <button class="btn btn-outline-primary" (click)="trade(undefined)">New Trade</button> |
+    <button class="btn btn-success" (click)="deposit()">Deposit Cash</button> |
+    <button class="btn btn-danger" (click)="withdraw()">Withdraw Cash</button>
+  </p>
+
+  <hr>
+
+  <h2 class="alert-heading">Order History</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>#ID</th>
+      <th>Symbol</th>
+      <th>Action</th>
+      <th>Quantity</th>
+      <th>Price Paid</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of portfolio.historyOrders">
+      <td>{{order.uuid}}</td>
+      <td>{{order.stock.symbol}}</td>
+      <td>{{order.action}}</td>
+      <td>{{order.quantity}}</td>
+      <td>{{order.pricePaid}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
